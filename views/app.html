@@ -1,16 +1,30 @@
 {% extends 'layout.html' %}
 {% block content %}
-<p> BACKEND IS SET </p>
-    <h1> Grocery List </h1>
-    <p> Budget: </p> <input type = "textbox" class = "boxes" name = "budget" id = "budget"> </input> 
-     <script src="./js/main.js"></script>
+
+<h1> Grocery List </h1>
+<p> Budget: </p> 
+
+<form action="/user" method="get">
+    <input type="number" class="boxes" name="budget" id="budget"></input>
+    <input type="submit" value="Update Budget" id="update" name="update"></input>
+</form> 
+
+{% if budgetVal %}
+    {{ 'Your current budget is ' + budgetVal }}
+{% endif %}
+{% if budgetErr %}
+    {{ budgetErr }}
+{% endif %}
+
+<form action="/search" method="get">
     <div id='TextBoxesGroup'>
-    <div id="TextBoxDiv1">
-    <label>Item 1: </label><input type='textbox' id='textbox1' >
-    </div>
+        <div id="TextBoxDiv1">
+            <label>Item 1: </label>
+            <input type='textbox' id='textbox1'>
+        </div>
     </div>
     <input type='button' value='Add' id='addButton'>
     <input type='button' value='enter' id='enter'>
-
+</form>
 
 {% endblock %}

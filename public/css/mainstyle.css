@@ -12,7 +12,7 @@
 *{
 	margin: 0;
 	padding: 0;
-	background-color: #FF6F00;
+	background-color: black;
 	text-align:center;
 	vertical-align: center;
 	/*display:inline-block;*/
@@ -21,6 +21,7 @@
 }
 
 body{
+	color: white;
 	/*margin: 0 auto;*/
 }
 h1{
@@ -55,7 +56,7 @@ input[type="button"]{
 }
 
 .boxes{
-	  display: block;
+  display: block;
   margin: 0;
   /*width: 100%;*/
   font-family: sans-serif;

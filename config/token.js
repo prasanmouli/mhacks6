@@ -1,0 +1,4 @@
+module.exports = {
+	walmartAPIKey : '',
+	firebaseAuthToken : ''
+}
