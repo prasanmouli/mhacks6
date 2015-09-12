@@ -1,1 +1,1 @@
-MHacks6
+MHACKS 6
