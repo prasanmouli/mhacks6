@@ -12,17 +12,23 @@
 *{
 	margin: 0;
 	padding: 0;
-	background-color: black;
+	/*background-color: #FF6F00;*/
 	text-align:center;
 	vertical-align: center;
 	/*display:inline-block;*/
 	line-height:150%;
 	font:sans-serif;
+	vertical-align: baseline;
+
+}
+#budget{
+	height: 40px;
 }
 
 body{
-	color: white;
+	background-color: #E8850C;
 	/*margin: 0 auto;*/
+	text-align:center;
 }
 h1{
 	font-weight: bold;
@@ -48,15 +54,18 @@ input[type="textbox"] {
 }
 input[type="textbox"]:focus {
   outline: none;
+  /*padding:5px;*/
+  /*padding-bottom: 30px;*/
 }
 
 input[type="button"]{
-	background-color:white;
-	color:#1A75CF;
+	/*background-color:white;*/
+	/*color:#1A75CF;*/
+
 }
 
 .boxes{
-  display: block;
+	  display: block;
   margin: 0;
   /*width: 100%;*/
   font-family: sans-serif;
@@ -69,7 +78,9 @@ input[type="button"]{
   margin: 0 auto;
 }
 label{
-  font-weight:bold;
+  font-weight:90000;
 
 	color:#036298;
 }
+
+

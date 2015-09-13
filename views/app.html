@@ -5,8 +5,9 @@
 <p> Budget: </p> 
 
 <form action="/user" method="get">
-    <input type="number" class="boxes" name="budget" id="budget"></input>
-    <input type="submit" value="Update Budget" id="update" name="update"></input>
+    <!-- <input type="number"  name="budget" id="budget"></input> -->
+    <input type = "number" name="budget" id="budget"></input>
+    <input class = "material-icons"type="submit" value="Update Budget" id="update" name="update"></input>
 </form> 
 
 {% if budgetVal %}
@@ -20,11 +21,22 @@
     <div id='TextBoxesGroup'>
         <div id="TextBoxDiv1">
             <label>Item 1: </label>
-            <input type='textbox' id='textbox1' name='textbox1' />
-        </div> 
+            <input type='textbox' id='textbox1'>
+        </div>
     </div>
-    <input type='button' value='Add' id='addButton'>
-    <input type='submit' value='enter' id='enter'>
+<!--     <input type='button' value='Add' id='addButton'>
+    <input type='submit' value='enter' id='enter'> -->
+    <a href="#!" class = "text-darken-2 btn waves blue">
+    <i class = "material-icons">-</i>
+  </a>
+    <a href="#!" class= "text-darken-2 btn waves blue">
+    <i type = 'submit' id = 'enter' class="material-icons">Calculate</i>
+  </a>  
+
+  <a href="#!" class=" text-darken-2 btn waves blue">
+    <i type = 'button'class="material-icons">+</i>
+  </a>
+   
 </form>
 
 {% endblock %}

@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 
 /* Update Budget */
 app.get('/user', function(req, res) {
-  if(isNaN(req.query.budget) || req.query.budget<0)
+  if(isNaN(req.query.budget) || req.query.budget<=0 || req.query.budget == " " )
     res.render('app', {budgetErr : 'Invalid Budget. Please enter a valid number'});
   else{
     myFirebaseRef.authWithCustomToken(config.firebaseAuthToken, function(error, authData) {
@@ -48,8 +48,9 @@ app.get('/user', function(req, res) {
 });
 
 /* Search Product */
-app.get('/search/:id/', function(req, res) {
-    res.send('search ' + req.params.id);
+app.get('/search', function(req, res) {
+    
+    res.send('search ' + req.query['textbox1']);
 });
 
 
