@@ -38,6 +38,9 @@ p{
 	font-weight:bold;
 	color:#1A75CF;
 }
+input{
+
+}
 
 input[type="textbox"] {
   display: block;
@@ -79,8 +82,7 @@ input[type="button"]{
 }
 label{
   font-weight:90000;
-
-	color:#036298;
+  color:#1A75CF;
 }
 
 

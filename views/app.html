@@ -3,10 +3,13 @@
 
 <h1> Grocery List </h1>
 <p> Budget: </p> 
-
+<script type="text/javascript"src = "./js/main.js">
+</script>
 <form action="/user" method="get">
     <!-- <input type="number"  name="budget" id="budget"></input> -->
+
     <input type = "number" name="budget" id="budget"></input>
+
     <input class = "material-icons"type="submit" value="Update Budget" id="update" name="update"></input>
 </form> 
 
@@ -24,9 +27,9 @@
             <input type='textbox' id='textbox1'>
         </div>
     </div>
-<!--     <input type='button' value='Add' id='addButton'>
-    <input type='submit' value='enter' id='enter'> -->
-    <a href="#!" class = "text-darken-2 btn waves blue">
+    <input type='button' value='Add' id='addButton'>
+    <input type='submit' value='enter' id='enter'>
+<!--     <a href="#!" class = "text-darken-2 btn waves blue">
     <i class = "material-icons">-</i>
   </a>
     <a href="#!" class= "text-darken-2 btn waves blue">
@@ -34,9 +37,9 @@
   </a>  
 
   <a href="#!" class=" text-darken-2 btn waves blue">
-    <i type = 'button'class="material-icons">+</i>
+    <i id = "addButton" type = 'button'class="material-icons">+</i>
   </a>
-   
+    -->
 </form>
 
 {% endblock %}
