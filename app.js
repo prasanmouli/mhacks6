@@ -10,6 +10,14 @@ var http = require("http"),
 var app = express();
 var myFirebaseRef = new firebase("https://crackling-torch-679.firebaseio.com/");
 
+var url = 'api.walmartlabs.com';
+var options = {
+  host: url,
+  port: 80,
+  path: '',
+  method: 'GET'
+};
+
 app.set('port', 8000);
 app.engine('html',swig.renderFile);
 app.set('view engine','html');
@@ -49,10 +57,11 @@ app.get('/user', function(req, res) {
 
 /* Search Product */
 app.get('/search', function(req, res) {
-    
-    res.send('search ' + req.query['textbox1']);
+    options.path = '/v1/search?apiKey='+config.walmartAPIKey+'&query='+req.query['textbox1'];
+    chunk = makeTheCall(function(chunk){
+      res.render('app', {productPreview : chunk.items, textbox1: req.query['textbox1'], search : true});
+    });
 });
-
 
 app.use(errorHandler());
 
@@ -60,23 +69,20 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
+function makeTheCall(myFunc){
+  var result = '';
+  http.request(options, function(res) {
+    //console.log('STATUS: ' + res.statusCode);
+    //console.log('HEADERS: ' + JSON.stringify(res.headers));
+    res.setEncoding('utf8');
+    res.on('data', function (chunk) {
+      result += chunk;
+    });
+    res.on('end', function(){
+      myFunc(JSON.parse(result));
+    });
+  }).end()
 
-var url = 'api.walmartlabs.com';
-var options = {
-  host: url,
-  port: 80,
-  path: '/v1/search?apiKey='+config.walmartAPIKey+'&query=ipod',
-  method: 'GET'
-};
-/*
-http.request(options, function(res) {
-  console.log('STATUS: ' + res.statusCode);
-  console.log('HEADERS: ' + JSON.stringify(res.headers));
-  res.setEncoding('utf8');
-  res.on('data', function (chunk) {
-    console.log('BODY: ' + chunk);
-  });
-}).end();*/
-
+}
 
 module.exports = app;

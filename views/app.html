@@ -1,45 +1,66 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<h1> Grocery List </h1>
-<p> Budget: </p> 
-<script type="text/javascript"src = "./js/main.js">
-</script>
-<form action="/user" method="get">
-    <!-- <input type="number"  name="budget" id="budget"></input> -->
+<h1> Walmart List </h1>
+    {% if budgetVal %}
+        <p style="font-weight: bold">{{ 'Your current budget is $' + budgetVal }}</p>
+    {% endif %}
+    {% if budgetErr %}
+        {{ budgetErr }}
+    {% endif %}
 
-    <input type = "number" name="budget" id="budget"></input>
-
-    <input class = "material-icons"type="submit" value="Update Budget" id="update" name="update"></input>
-</form> 
-
-{% if budgetVal %}
-    {{ 'Your current budget is ' + budgetVal }}
-{% endif %}
-{% if budgetErr %}
-    {{ budgetErr }}
-{% endif %}
-
-<form action="/search" method="get">
-    <div id='TextBoxesGroup'>
-        <div id="TextBoxDiv1">
-            <label>Item 1: </label>
-            <input type='textbox' id='textbox1'>
+        <form action="/user" method="get">
+        <div id = "col">
+            <input class = "bx" style=" -moz-box-shadow:0 0 8px 0 black; display:inline-block; -webkit-box-shadow:0 0 8px 0 black; box-shadow:100 10 8px 50 black;"type = "number" name="budget" id="budget" autocomplete='off'></input>
+            <input class = "material-icons"type="submit" value="Update Budget" id="update" name="update" placeholder="What is your budget?"></input>
+            <!--input class="budgetButton" type='submit' value='enter' id='enter'></input-->
         </div>
-    </div>
-    <input type='button' value='Add' id='addButton'>
-    <input type='submit' value='enter' id='enter'>
-<!--     <a href="#!" class = "text-darken-2 btn waves blue">
-    <i class = "material-icons">-</i>
-  </a>
-    <a href="#!" class= "text-darken-2 btn waves blue">
-    <i type = 'submit' id = 'enter' class="material-icons">Calculate</i>
-  </a>  
+        </form>
 
-  <a href="#!" class=" text-darken-2 btn waves blue">
-    <i id = "addButton" type = 'button'class="material-icons">+</i>
-  </a>
-    -->
-</form>
+        <div id="wrapper">
+        <div id="leftcolumn">
+            <input type='button' value='Add Item' id='addButton'>
+            <form action="/search" method="get">
+                <div id='TextBoxesGroup'>
+                    <div id="TextBoxDiv1">
+                        <input type='text' autocomplete='off' id='textbox1' class='boxes' name='textbox1' placeholder="Enter item here" >
+                        <input type='submit' value='+' class='enterButton' id='enter' name='enter'>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="rightcolumn">
+            {% if search %}
+            {% set productPreviewClass = 'productPreviewList' %}
+            {% set productPreviewDiv = 'productPreviewDiv' %}
+            {% set productCategory = 'productCategory' %}
+            {% set productTitle = 'productTitle' %}
+            {% set productPrice = 'productPrice' %}
+            {% set productLink = 'productLink' %}
+            {% for product in productPreview %}
+                {% if product.availableOnline %}
+                    
+                <div class={{productPreviewDiv}}>
+                <ol>
+                    <li class={{productPreviewClass}}>
+                        <div class={{ productTitle }}>{{ product.name }}</div>
+                        <div class={{ productCategory }}>{{ product.categoryPath }}</div>
+                        <div class={{ productPrice }}>{{ '$'+product.salePrice }} {% if product.customerRating %} {{'| Rating '+product.customerRating}} {% endif %}</div>
+                    </li>
+                    <li class={{productPreviewClass}}>
+                        <div><a class={{ productLink }}>Add Item</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class={{ productLink }} href={{ product.addToCartUrl }} target='_blank'>Add to Walmart Cart</a></div>
+                    </li>
+                </ol>
+                </div>
+
+                {% endif %}   
+            {% endfor %}
+            {% endif %}
+        </div>
+        </div>
+
+    <form action="/save" method="get">
+        <input type='button' value='Save' id='addButton' name 'addButton'>
+    </form>
 
 {% endblock %}

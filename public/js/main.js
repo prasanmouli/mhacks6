@@ -1,6 +1,6 @@
 var leftoverBudget;
 var counter = 1;
-	var cur = 2;
+	var cur = 1;
 
 $(document).ready(function(){
 	// console.log("ayo");
@@ -27,21 +27,11 @@ $(document).ready(function(){
 
 });
 
-	$("#addButton").click(function(e){
-		// e.stopPropagation();
-
-		    console.log("hit");
-
-		var newTextBoxDiv =  $(document.createElement('div')).attr("id", 'TextButtonDiv' + counter);
-
-		newTextBoxDiv.after().html('<label>Item '+ cur + ' : </label>' +
-		      '<input type="text" name="textbox' + cur + 
-		      '" class = "boxes" id="textbox' + cur + '" value="" >');
-	            
-
-					
-		 ++counter;
-	     ++cur;
-
-		newTextBoxDiv.appendTo("#TextBoxesGroup");
-	     });
+$("#addButton").click(function(e){
+	var newTextBoxDiv =  $(document.createElement('div')).attr("id", 'TextButtonDiv' + counter);
+	var curr = "ITEM: " +
+	newTextBoxDiv.after().html('<input class="boxes" autocomplete="off" type="text" name="textbox' + cur + '" id="textbox' + cur + '" placeholder="Enter Item Here" ><input type="submit" value="+" class="enterButton" id="enter' + cur + 'name="enter' + cur + '>');
+	++counter;
+	++cur;
+	newTextBoxDiv.appendTo("#leftcolumn");
+});
